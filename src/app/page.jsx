@@ -50,13 +50,6 @@ export default function Home() {
           año de publicación, editorial, y mucho más.
         </li>
       </motion.ul>
-      <motion.button
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.9 }}
-        className="px-6 py-3 bg-blue-600 rounded-md hover:bg-blue-500 transition-colors duration-300"
-      >
-        Buscador de Libros
-      </motion.button>
     </motion.div>
   );
 }

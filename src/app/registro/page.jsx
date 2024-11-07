@@ -13,7 +13,7 @@ export default function Registro() {
     fechaNacimiento: "",
     genero: "masculino",
   });
-  const [edad, setEdad] = useState(0);
+  const [edad, setEdad] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   const { login } = useAuth();
@@ -38,18 +38,21 @@ export default function Registro() {
 
     setForm({ ...form, [name]: value });
 
-    if (name === "fechaNacimiento") {
+    if (name === "fechaNacimiento" && value) {
       const birthDate = new Date(value);
-      const today = new Date();
-      const age = today.getFullYear() - birthDate.getFullYear();
-      const monthDifference = today.getMonth() - birthDate.getMonth();
-      if (
-        monthDifference < 0 ||
-        (monthDifference === 0 && today.getDate() < birthDate.getDate())
-      ) {
-        setEdad(age - 1);
-      } else {
+      if (!isNaN(birthDate)) {
+        const today = new Date();
+        let age = today.getFullYear() - birthDate.getFullYear();
+        const monthDifference = today.getMonth() - birthDate.getMonth();
+        if (
+          monthDifference < 0 ||
+          (monthDifference === 0 && today.getDate() < birthDate.getDate())
+        ) {
+          age--;
+        }
         setEdad(age);
+      } else {
+        setEdad(null);
       }
     }
   };
@@ -58,14 +61,14 @@ export default function Registro() {
     const { nombres, apellidos, telefono, email, fechaNacimiento } = form;
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const lettersRegex = /^[A-Za-z\s]+$/;
-    const phoneRegex = /^[0-9]{1,10}$/;
+    const phoneRegex = /^[0-9]{10}$/;
 
     if (!lettersRegex.test(nombres))
       return "Los nombres solo deben contener letras.";
     if (!lettersRegex.test(apellidos))
       return "Los apellidos solo deben contener letras.";
     if (!phoneRegex.test(telefono))
-      return "El teléfono debe tener un máximo de 10 dígitos.";
+      return "El teléfono debe tener exactamente 10 dígitos.";
     if (!emailRegex.test(email)) return "El email no es válido.";
     if (!fechaNacimiento) return "La fecha de nacimiento es obligatoria.";
 
@@ -148,7 +151,7 @@ export default function Registro() {
             name="telefono"
             value={form.telefono}
             onChange={handleChange}
-            placeholder="Teléfono"
+            placeholder="Teléfono (10 dígitos)"
             required
             className="border-none p-4 rounded-md bg-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
@@ -171,14 +174,16 @@ export default function Registro() {
             required
             className="border-none p-4 rounded-md bg-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 1.5 }}
-            className="text-lg font-semibold"
-          >
-            Edad: <span className="text-blue-400">{edad}</span>
-          </motion.p>
+          {form.fechaNacimiento && !isNaN(new Date(form.fechaNacimiento)) && (
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8, delay: 1.5 }}
+              className="text-lg font-semibold"
+            >
+              Edad: <span className="text-blue-400">{edad}</span>
+            </motion.p>
+          )}
           <motion.select
             whileFocus={{ scale: 1.05 }}
             name="genero"

@@ -221,7 +221,6 @@ function BuscarLibrosContent() {
                   Autor: {book.author_name?.join(", ") || "Sin información"}
                 </p>
                 <motion.button
-                  whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
                   onClick={() => handleViewDetails(book)}
                   className="mt-3 w-full py-2 bg-blue-600 rounded-md text-white hover:bg-blue-500 transition-colors duration-300"

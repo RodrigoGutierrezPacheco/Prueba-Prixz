@@ -1,13 +1,13 @@
 "use client";
 import { motion } from "framer-motion";
-import { useState, useEffect } from "react";
+import { Suspense, useState, useEffect } from "react";
 import Image from "next/image";
 import { getBooks } from "../services/books";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useBook } from "@/context/BookContext";
 import "./buscador.css";
 
-export default function BuscarLibros() {
+function BuscarLibrosContent() {
   const [query, setQuery] = useState("");
   const [searchType, setSearchType] = useState("title");
   const [books, setBooks] = useState([]);
@@ -41,8 +41,8 @@ export default function BuscarLibros() {
   const handleSearchSubmit = (e) => {
     e.preventDefault();
     if (query.trim() !== "") {
-      router.push(`/buscador?q=${encodeURIComponent(query)}`); 
-      handleSearch(); 
+      router.push(`/buscador?q=${encodeURIComponent(query)}`);
+      handleSearch();
     }
   };
 
@@ -85,7 +85,6 @@ export default function BuscarLibros() {
         });
     }
   }, [searchParams, searchType]);
-  
 
   const startIndex = (currentPage - 1) * booksPerPage;
   const selectedBooks = books.slice(startIndex, startIndex + booksPerPage);
@@ -267,5 +266,13 @@ export default function BuscarLibros() {
         </motion.p>
       )}
     </motion.div>
+  );
+}
+
+export default function BuscarLibros() {
+  return (
+    <Suspense fallback={<div>Cargando...</div>}>
+      <BuscarLibrosContent />
+    </Suspense>
   );
 }

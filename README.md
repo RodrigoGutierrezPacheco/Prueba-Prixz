@@ -1,3 +1,5 @@
+Enlace del proyecto: https://prueba-prixz-g9mzfkb86-rodrigogutierrezpachecos-projects.vercel.app/
+
 Prueba Técnica - Prixz
 
 Este proyecto es una prueba técnica para Prixz, desarrollada usando Next.js y configurada con create-next-app.

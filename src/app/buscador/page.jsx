@@ -109,9 +109,9 @@ function BuscarLibrosContent() {
         animate={{ scale: 1, opacity: 1 }}
         transition={{ duration: 0.8, delay: 1 }}
         onSubmit={handleSearchSubmit}
-        className="flex flex-col items-center w-full max-w-lg mb-8"
+        className="flex flex-col items-center w-full max-w-sm mb-8 px-4"
       >
-        <div className="flex w-full mb-4">
+        <div className="flex flex-col w-full space-y-4 sm:flex-row sm:space-y-0 sm:space-x-4 mb-4">
           <input
             type="text"
             value={query}
@@ -119,12 +119,12 @@ function BuscarLibrosContent() {
             placeholder={`Buscar por ${
               searchType === "title" ? "título" : "autor"
             }`}
-            className="flex-1 p-3 rounded-l-md border-none text-black focus:outline-none"
+            className="flex-1 p-3 rounded-md border-none text-black focus:outline-none"
           />
           <select
             value={searchType}
             onChange={(e) => setSearchType(e.target.value)}
-            className="p-3 bg-gray-700 text-white rounded-r-md focus:outline-none"
+            className="p-3 bg-gray-700 text-white rounded-md focus:outline-none mt-4 sm:mt-0"
           >
             <option value="title">Buscar por título</option>
             <option value="author">Buscar por autor</option>
@@ -135,7 +135,7 @@ function BuscarLibrosContent() {
           whileTap={{ scale: 0.9 }}
           type="submit"
           disabled={loading}
-          className="px-6 py-3 bg-blue-600 rounded-md hover:bg-blue-500 transition-colors duration-300 disabled:opacity-50"
+          className="px-6 py-3 bg-blue-600 rounded-md hover:bg-blue-500 transition-colors duration-300 disabled:opacity-50 w-full sm:w-auto"
         >
           {loading ? "Buscando..." : "Buscar"}
         </motion.button>
@@ -173,7 +173,7 @@ function BuscarLibrosContent() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 0.5 }}
-            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6"
+            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 w-full px-4"
           >
             {selectedBooks.map((book, index) => (
               <motion.div
@@ -182,7 +182,7 @@ function BuscarLibrosContent() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 whileHover={{ scale: 1.05 }}
-                className="card bg-gray-700 p-4 rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-500 flex flex-col items-center relative"
+                className="card bg-gray-700 p-4 rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-500 flex flex-col items-center relative w-full"
               >
                 {book.first_publish_year && (
                   <div className="absolute -top-4 right-2 transform translate-x-1/2 bg-blue-600 text-white text-xs font-bold rounded-full h-10 w-10 flex items-center justify-center shadow-lg">
@@ -225,7 +225,7 @@ function BuscarLibrosContent() {
               </motion.div>
             ))}
           </motion.div>
-          <div className="flex justify-between w-full max-w-lg mt-8">
+          <div className="flex justify-between w-full max-w-sm mt-8 px-4">
             <motion.button
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}

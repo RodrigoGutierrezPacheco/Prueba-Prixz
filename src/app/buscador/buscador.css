@@ -1,0 +1,26 @@
+.marquee-container {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+  }
+  
+  .marquee-text {
+    display: inline-block;
+    white-space: nowrap;
+    transform: translateX(0);
+    transition: transform 0s linear;
+  }
+  
+  .card:hover .marquee-text {
+    animation: marquee 5s linear infinite;
+  }
+  
+  @keyframes marquee {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+  

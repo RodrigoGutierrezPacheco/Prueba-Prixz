@@ -32,7 +32,7 @@ export default function Home() {
         className="list-disc list-inside mb-6 md:mb-8 max-w-full md:max-w-xl text-left"
       >
         <li className="mb-1 md:mb-2">Registrarse para crear tu cuenta de usuario.</li>
-        <li className="mb-1 md:mb-2">Iniciar sesión y cerrar sesión de tu cuenta en cualquier momento.</li>
+        <li className="mb-1 md:mb-2">Cerrar sesión de tu cuenta en cualquier momento.</li>
         <li className="mb-1 md:mb-2">Editar la información de tu perfil, como nombres, apellidos, teléfono y más.</li>
         <li className="mb-1 md:mb-2">Buscar libros por título o autor y explorar los resultados.</li>
         <li className="mb-1 md:mb-2">Ver los detalles de cada libro, incluyendo información como el autor, año de publicación, editorial, y mucho más.</li>

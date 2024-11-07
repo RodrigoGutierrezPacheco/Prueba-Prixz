@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/context/AuthContext";
 import { motion } from "framer-motion";
+import "../../app/globals.css";
 
 export default function Registro() {
   const [form, setForm] = useState({
@@ -212,7 +213,13 @@ export default function Registro() {
             className="bg-gradient-to-r from-blue-500 to-indigo-500 text-white py-3 rounded-md font-bold hover:scale-105 transition-transform duration-300 shadow-lg disabled:opacity-50"
             disabled={loading}
           >
-            {loading ? "Guardando..." : "Guardar"}
+            {loading ? (
+              <span className="flex items-center justify-center">
+                <span className="loader mr-2"></span> Guardando...
+              </span>
+            ) : (
+              "Guardar"
+            )}
           </motion.button>
         </motion.form>
       </motion.div>

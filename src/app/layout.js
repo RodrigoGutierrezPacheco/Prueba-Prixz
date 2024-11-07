@@ -3,6 +3,7 @@ import "./globals.css";
 import NavBar from "@/components/NavBar";
 import { AuthProvider } from "@/context/AuthContext";
 import { BookProvider } from "@/context/BookContext";
+import Footer from "@/components/Footer";
 
 const geistSans = localFont({
   src: [
@@ -41,6 +42,7 @@ export default function RootLayout({ children }) {
           <BookProvider>
             <NavBar />
             {children}
+            <Footer/>
           </BookProvider>
         </AuthProvider>
       </body>

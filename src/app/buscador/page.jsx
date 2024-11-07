@@ -134,10 +134,16 @@ function BuscarLibrosContent() {
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
           type="submit"
-          disabled={loading}
+          disabled={loading || query.trim() === ""}
           className="px-6 py-3 bg-blue-600 rounded-md hover:bg-blue-500 transition-colors duration-300 disabled:opacity-50 w-full sm:w-auto"
         >
-          {loading ? "Buscando..." : "Buscar"}
+          {loading ? (
+            <span className="flex items-center justify-center">
+              <span className="loader mr-2"></span> Buscando...
+            </span>
+          ) : (
+            "Buscar"
+          )}
         </motion.button>
       </motion.form>
 

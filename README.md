@@ -6,7 +6,7 @@ Este proyecto es una prueba técnica para Prixz, desarrollada usando Next.js y c
 
 Introducción
 
-Este repositorio contiene el código fuente de la prueba técnica realizada para Prixz, utilizando las herramientas modernas de desarrollo de la plataforma de Next.js. Además, se incluye un archivo .env solo con fines de revisión y verificación del proyecto.
+Este repositorio contiene el código fuente de la prueba técnica realizada para Prixz, utilizando las herramientas de desarrollo de la plataforma de Next.js. Además, se incluye un archivo .env solo con fines de revisión y verificación del proyecto.
 
 Requisitos Previos
 
@@ -35,3 +35,16 @@ npm run dev
 yarn dev
 
 Esto iniciará el proyecto en modo desarrollo. Abre http://localhost:3000 en tu navegador para ver el resultado.
+
+Características del Proyecto
+
+Manejo de registro, edición del perfil y verificación del cliente en el localStorage utilizando Context API.
+
+Uso de un contexto para almacenar la información del libro seleccionado, permitiendo ver sus detalles.
+
+Animaciones agregadas utilizando Framer Motion.
+
+Estilos aplicados con Tailwind CSS.
+
+Peticiones realizadas mediante fetch para comunicarse con la API.
+

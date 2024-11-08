@@ -1,4 +1,4 @@
-Enlace del proyecto: https://prueba-prixz-g9mzfkb86-rodrigogutierrezpachecos-projects.vercel.app/
+Enlace del proyecto: https://prueba-prixz.vercel.app/
 
 Prueba Técnica - Prixz
 
